@@ -1,0 +1,36 @@
+$primary: #4fd1c5;
+$secondary: #63b3ed;
+$error: #ff7b79;
+
+@mixin check-list($color) {
+  position: relative;
+  border: solid 2px $color;
+  padding: 0 0.5rem;
+  margin-top: 2rem;
+  &:before {
+    content: "Check!";
+    position: absolute;
+    bottom: 100%;
+    left: -2px;
+    color: #fff;
+    background: $color;
+    letter-spacing: 0.05rem;
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+  }
+  li {
+    line-height: 1.5;
+    padding: 0.5rem 1.5rem;
+    border-bottom: dashed 1px silver;
+    list-style-type: none!important;
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &:before {
+      content: "●";
+      position: absolute;
+      left : 0.5rem;
+      color: $color;
+    }
+  }// li
+}// ul.primary
