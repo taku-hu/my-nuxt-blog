@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white text-center shadow-md px-10 py-20 md:px-20">
+  <div class="article w-full bg-white text-center shadow-md px-10 py-20 mb-8 md:px-20">
     <p class="font-bold mb-10">
       <fa :icon="faCalendarAlt" />
       {{ convertDate(work.sys.createdAt) }}
@@ -21,21 +21,19 @@
       class="block h-64 bg-center bg-cover bg-no-repeat mx-auto mb-10"
       :style="`background-image: url(${work.fields.media.fields.file.url})`"
     />
-    <ul class="mb-10">
-      <li
-        v-for="tag in work.fields.tag"
-        :key="tag.sys.id"
-        class="inline-block mr-2"
-      >
-        <nuxt-link
-          class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
-          :to="`/tag/${tag.sys.id}`"
-        >
-          <fa :icon="faTags" />
-          {{ tag.fields.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="mb-10 hidden md:block">
+      <ul class="flex flex-wrap justify-center">
+        <li v-for="tag in work.fields.tag" :key="tag.fields.name" class="m-2">
+          <nuxt-link
+            class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
+            :to="`/tag/${tag.sys.id}`"
+          >
+            <fa :icon="faTags" />
+            {{ tag.fields.name }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
 
     <slot />
   </div>

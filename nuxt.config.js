@@ -1,5 +1,4 @@
 import { createClient }from './plugins/contentful'
-require('dotenv').config()
 
 export default {
   /*
@@ -24,11 +23,11 @@ export default {
     htmlAttrs: {
       lang: 'ja'
     },
-    title: process.env.npm_package_name || '',
+    title: 'taku-hu-blog',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'フロントエンドエンジニアによる、WEB技術・キャリア戦略のブログ。' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -45,8 +44,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: '~plugins/font-awesome', ssr: false },
-    '~/plugins/prism'
+    '~/plugins/font-awesome',
+    '~/plugins/prism',
+    '~/plugins/disqus'
   ],
   /*
   ** Auto import components
@@ -58,24 +58,71 @@ export default {
   */
   buildModules: [
     '@nuxt/typescript-build',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
+    ['@nuxtjs/google-analytics', {
+      id: process.env.GOOGLE_ANALYTICS_ID
+    }]
   ],
+  styleResources: {
+    scss: [
+      '~/assets/scss/_fragments.scss'
+    ]
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
     '@nuxtjs/pwa',
     '@nuxtjs/markdownit',
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/sitemap'
   ],
   markdownit: {
-    html: true,
     injected: true,
+    breaks: true,
+    html: true,
     linkify: true,
-    breaks: false
+    typography: true,
+    use: [
+      ['markdown-it-table-of-contents', {
+        includeLevel: [2, 3],
+        containerClass: 'article__table-of-contents',
+        containerHeaderHtml: '<div class="toc-header">目次</div>',
+        listType: 'ol'
+      }],
+      ['markdown-it-link-attributes', {
+        attrs: {
+          target: '_blank'
+          // rel: 'noopener'
+        }
+      }],
+      'markdown-it-anchor'
+    ]
   },
   fontawesome: {
     component: 'fa'
+  },
+  sitemap: {
+    hostname: 'https://taku-hu-blog.netlify.app/',
+    async routes() {
+      const [works, categories, tags] = await Promise.all([
+        createClient().getEntries({
+          'content_type': 'work'
+        }),
+        createClient().getEntries({
+          'content_type': 'category'
+        }),
+        createClient().getEntries({
+          'content_type': 'tag'
+        })
+      ])
+      return [
+        ...works.items.map(work => `work/${work.fields.slug}`),
+        ...categories.items.map(category => `category/${category.fields.slug}`),
+        ...tags.items.map(tag => `tag/${tag.sys.id}`)
+      ]
+    }
   },
   /*
   ** Build configuration

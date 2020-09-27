@@ -1,12 +1,9 @@
 <template>
-  <header
-    class="header flex flex-col justify-center bg-right bg-fixed bg-no-repeat bg-contain px-4 md:pl-40 md:pr-0"
-    :style="{ backgroundImage: `url(${require(`@/assets/images/JavaScript_frameworks.svg`)})` }"
-  >
+  <header class="header flex flex-col justify-center bg-center bg-fixed bg-no-repeat bg-contain px-4 md:bg-right md:pl-40 md:pr-0">
     <div
       :class="[
         'fixed', 'top-0', 'inset-x-0', 'z-50', 'flex', 'justify-between', 'items-center', 'transition', 'duration-500', 'px-4', 'py-3', 'md:pl-40',
-        { 'bg-teal-400': isScrollDown}
+        { 'bg-teal-400': isScrollDown, 'py-8': !isScrollDown }
       ]"
     >
       <h1
@@ -127,6 +124,7 @@ export default Vue.extend({
 <style lang="scss">
 .header {
   height: calc(var(--vh, 1vh) * 100);
+  background-image: url('~@/assets/images/frameworks.svg');
   &__title1 {
     font-size: 2.5rem;
   }

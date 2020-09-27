@@ -1,10 +1,8 @@
 <template>
   <common-article-frame :work="work">
-    <h3 class="text-gray-600 text-xl mb-10">
-      {{ work.fields.subtitle }}
-    </h3>
+    <h3 class="subtitle text-gray-600 text-xl mb-10" v-html="work.fields.subtitle" />
     <nuxt-link
-      class="border border-solid border-black font-bold transition duration-500 p-3 hover:bg-black hover:text-white"
+      class="border border-solid border-black font-bold transition duration-500 px-4 py-3 hover:bg-black hover:text-white"
       :to="`/work/${work.fields.slug}`"
     >
       READ MORE
@@ -30,3 +28,12 @@ export default Vue.extend({
   }
 })
 </script>
+
+<style lang="scss">
+.subtitle {
+  a {
+    color: darken($secondary, 20);
+    text-decoration: underline;
+  }
+}
+</style>
