@@ -6,7 +6,7 @@
       @search-article="searchArticle"
     />
 
-    <main id="main" class="max-w-full flex flex-col py-10 px-8 lg:flex-row lg:px-32" >
+    <main id="main" class="max-w-full flex flex-col py-10 px-4 lg:flex-row lg:px-40">
       <div class="mb-8 lg:w-2/3 lg:mr-8 lg:mb-0">
         <nuxt />
       </div>
@@ -25,7 +25,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { createClient } from '@/plugins/contentful'
-import { ContentfulCollection, Entry, Field } from 'contentful/index'
+import { EntryCollection, Entry, Field } from 'contentful/index'
 import { faTags, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
 import CommonSelfIntroduceCard from '@/components/CommonSelfIntroduceCard.vue'
@@ -54,28 +54,31 @@ export default Vue.extend({
     faAngleRight: () => faAngleRight
   },
   async created() {
-    const tags: ContentfulCollection<Entry<Field>> = await createClient().getEntries({
-      'content_type': 'tag',
-      order: '-sys.createdAt'
-    })
+    const [tags, categories]: EntryCollection<Field>[] = await Promise.all([
+      createClient().getEntries({
+        'content_type': 'tag',
+        order: '-sys.createdAt'
+      }),
+      createClient().getEntries({
+        'content_type': 'category',
+        order: '-sys.createdAt'
+      })
+    ])
+
     this.tags = tags.items
-    const categories: ContentfulCollection<Entry<Field>> = await createClient().getEntries({
-      'content_type': 'category',
-      order: '-sys.createdAt'
-    })
     this.categories = categories.items
   },
   mounted() {
-    this.getInnerVh()
+    const getInnerVh = () => {
+      const vh = (window as Window).innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    }
+    getInnerVh()
     window.addEventListener('resize', () => {
-      this.getInnerVh()
+      getInnerVh()
     })
   },
   methods: {
-    getInnerVh() {
-      const vh = window.innerHeight * 0.01
-      document.documentElement.style.setProperty('--vh', `${vh}px`)
-    },
     searchArticle() {
       if(!this.keywords) {
         return

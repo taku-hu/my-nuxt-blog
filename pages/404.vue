@@ -1,9 +1,6 @@
 <template>
-  <header
-    class="header flex flex-col justify-center bg-right bg-fixed bg-no-repeat bg-contain px-4 lg:pl-40 lg:pr-0"
-    :style="{ backgroundImage: `url(${require(`@/assets/images/JavaScript_frameworks.svg`)})` }"
-  >
-    <div class="fixed top-0 inset-x-0 z-50 flex justify-between items-center transition duration-500 px-4 py-3 lg:pl-40">
+  <header class="header flex flex-col justify-center bg-right bg-fixed bg-no-repeat bg-contain px-4 lg:pl-40 lg:pr-0">
+    <div class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-4 py-3 lg:pl-40">
       <h1 class="font-bold">
         <nuxt-link to="/">
           Takeuchi's FrontEnd Blog
@@ -73,6 +70,7 @@ export default Vue.extend({
 <style lang="scss">
 .header {
   height: calc(var(--vh, 1vh) * 100);
+  background-image: url('~@/assets/images/frameworks.svg');
   &__title1 {
     font-size: 2.5rem;
   }

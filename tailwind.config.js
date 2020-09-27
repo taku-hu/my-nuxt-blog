@@ -5,6 +5,11 @@
 ** Default: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
 */
 module.exports = {
+  theme: {
+    transitionProperty: {
+      all: 'all'
+    }
+  },
   variants: {
     fontSize: ['responsive', 'hover']
   },
