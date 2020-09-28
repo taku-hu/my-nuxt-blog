@@ -1,5 +1,5 @@
 <template>
-  <common-home-card class="mb-8" :card-data="cardData">
+  <common-home-card :card-data="cardData">
     <template v-slot:titleImage>
       <img class="w-20 mr-2" :src="require('@/assets/images/profile.svg')">
     </template>

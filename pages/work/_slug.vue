@@ -1,14 +1,26 @@
 <template>
   <common-article-frame id="article" class="relative" :work="work">
+    <ul class="flex flex-wrap justify-center mb-10">
+      <li v-for="tag in work.fields.tag" :key="tag.fields.name" class="m-2">
+        <nuxt-link
+          class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
+          :to="`/tag/${tag.sys.id}`"
+        >
+          <fa :icon="faTags" />
+          {{ tag.fields.name }}
+        </nuxt-link>
+      </li>
+    </ul>
+
     <div class="article__content" v-html="$md.render(work.fields.content)" />
 
     <disqus
       shortname="taku-hu-blog"
       :identifier="work.fields.slug"
-      :url="`https://taku-hu-blog.netlify.app//posts/${work.fields.slug}`"
+      :url="`https://taku-hu-blog.netlify.app/works/${work.fields.slug}`"
     />
 
-    <a class="absolute right-0 bottom-0 m-8 underline text-lg hover:opacity-75" href="#article">
+    <a class="absolute right-0 bottom-0 m-3 underline text-lg hover:opacity-75 md:m-8" href="#article">
       <fa-layers class="align-middle">
         <fa :icon="faUndo" />
       </fa-layers>
@@ -21,7 +33,7 @@
 import Vue from 'vue'
 import { createClient } from '@/plugins/contentful'
 import Prism from '@/plugins/prism'
-import { faUndo } from '@fortawesome/free-solid-svg-icons'
+import { faUndo, faTags } from '@fortawesome/free-solid-svg-icons'
 
 import CommonArticleFrame from '@/components/CommonArticleFrame'
 
@@ -39,7 +51,8 @@ export default Vue.extend({
     }
   },
   computed: {
-    faUndo: () => faUndo
+    faUndo: () => faUndo,
+    faTags: () => faTags
   },
   mounted() {
     Prism.highlightAll()

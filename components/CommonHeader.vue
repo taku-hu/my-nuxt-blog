@@ -2,7 +2,7 @@
   <header class="header flex flex-col justify-center bg-center bg-fixed bg-no-repeat bg-contain px-4 md:bg-right md:pl-40 md:pr-0">
     <div
       :class="[
-        'fixed', 'top-0', 'inset-x-0', 'z-50', 'flex', 'justify-between', 'items-center', 'transition', 'duration-500', 'px-4', 'py-3', 'md:pl-40',
+        'fixed', 'top-0', 'inset-x-0', 'z-50', 'flex', 'justify-between', 'items-center', 'transition-all', 'duration-500', 'px-4', 'py-3', 'md:pl-40',
         { 'bg-teal-400': isScrollDown, 'py-8': !isScrollDown }
       ]"
     >

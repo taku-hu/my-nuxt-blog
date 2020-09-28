@@ -6,14 +6,14 @@
       @search-article="searchArticle"
     />
 
-    <main id="main" class="max-w-full flex flex-col py-10 px-4 lg:flex-row lg:px-40">
-      <div class="mb-8 lg:w-2/3 lg:mr-8 lg:mb-0">
+    <main id="main" class="max-w-full flex flex-col py-10 px-4 md:flex-row lg:px-40">
+      <div class="md:w-2/3 md:mr-4 lg:mr-8">
         <nuxt />
       </div>
 
-      <div class="lg:w-1/3">
-        <common-self-introduce-card class="mb-8" />
-        <common-categories-card :categories="categories" class="mb-8" />
+      <div class="md:w-1/3">
+        <common-self-introduce-card class="mb-4 lg:mb-8" />
+        <common-categories-card :categories="categories" class="mb-4 lg:mb-8" />
         <common-tags-card :tags="tags" />
       </div>
     </main>
