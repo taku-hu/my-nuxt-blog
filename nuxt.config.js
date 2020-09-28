@@ -94,7 +94,6 @@ export default {
       ['markdown-it-link-attributes', {
         attrs: {
           target: '_blank'
-          // rel: 'noopener'
         }
       }],
       'markdown-it-anchor'
