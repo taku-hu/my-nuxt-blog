@@ -1,5 +1,5 @@
 <template>
-  <div class="article w-full bg-white text-center shadow-md px-10 py-10 mb-8 md:px-20 md:py-20">
+  <div class="article w-full bg-white text-center shadow-md px-10 py-12 mb-4 md:px-20 md:py-20 md:mb-8">
     <p class="font-bold mb-10">
       <fa :icon="faCalendarAlt" />
       {{ convertDate(work.sys.createdAt) }}
