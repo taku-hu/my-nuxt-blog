@@ -17,7 +17,7 @@
     <disqus
       shortname="taku-hu-blog"
       :identifier="work.fields.slug"
-      :url="`https://taku-hu-blog.netlify.app/works/${work.fields.slug}`"
+      :url="`https://taku-hu-blog.netlify.app/work/${work.fields.slug}`"
     />
 
     <a class="absolute right-0 bottom-0 m-3 underline text-lg hover:opacity-75 md:m-8" href="#article">
