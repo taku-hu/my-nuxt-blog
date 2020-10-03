@@ -118,8 +118,8 @@ export default {
       ])
       return [
         ...works.items.map(work => `work/${work.fields.slug}`),
-        ...categories.items.map(category => `category/${category.fields.slug}`),
-        ...tags.items.map(tag => `tag/${tag.sys.id}`)
+        ...categories.items.map(category => `category/${category.fields.slug}/${category.fields.name}`),
+        ...tags.items.map(tag => `tag/${tag.sys.id}/${tag.fields.name}`)
       ]
     }
   },
@@ -142,8 +142,8 @@ export default {
       ])
       return [
         ...works.items.map(work => `work/${work.fields.slug}`),
-        ...categories.items.map(category => `category/${category.fields.slug}`),
-        ...tags.items.map(tag => `tag/${tag.sys.id}`)
+        ...categories.items.map(category => `category/${category.fields.slug}/${category.fields.name}`),
+        ...tags.items.map(tag => `tag/${tag.sys.id}/${tag.fields.name}`)
       ]
     },
     fallback: true

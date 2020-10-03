@@ -2,7 +2,7 @@
   <div class="article w-full bg-white text-center shadow-md px-10 py-12 mb-4 md:px-20 md:py-20 md:mb-8">
     <p class="font-bold mb-10">
       <fa :icon="faCalendarAlt" />
-      {{ convertDate(work.sys.createdAt) }}
+      {{ convertDate(work.fields.date) }}
       <span v-if="work.sys.updatedAt" class="font-bold">
         ({{ convertDate(work.sys.updatedAt) }} updated)
       </span>
@@ -12,7 +12,7 @@
     </h2>
     <nuxt-link
       class="inline-block font-bold text-black opacity-50 text-2xl mb-5"
-      :to="`/category/${work.fields.category.sys.id}`"
+      :to="`/category/${work.fields.category.sys.id}/${work.fields.category.fields.name}`"
     >
       {{ work.fields.category.fields.name }}
     </nuxt-link>

@@ -1,17 +1,7 @@
 <template>
   <common-article-frame :work="work">
     <div class="mb-10 hidden md:block">
-      <ul class="flex flex-wrap justify-center">
-        <li v-for="tag in work.fields.tag" :key="tag.fields.name" class="m-2">
-          <nuxt-link
-            class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
-            :to="`/tag/${tag.sys.id}`"
-          >
-            <fa :icon="faTags" />
-            {{ tag.fields.name }}
-          </nuxt-link>
-        </li>
-      </ul>
+      <common-tags :tags="work.fields.tag" />
     </div>
     <h3 class="subtitle text-gray-600 text-xl mb-10" v-html="work.fields.subtitle" />
     <nuxt-link
@@ -28,11 +18,13 @@ import Vue, { PropType } from 'vue'
 import { Entry } from 'contentful/index'
 import { faTags } from '@fortawesome/free-solid-svg-icons'
 
-import CommonArticleFrame from '@/components/CommonArticleFrame.vue'
+import CommonArticleFrame from '@/components/commonPresentational/CommonArticleFrame.vue'
+import CommonTags from '@/components/commonPresentational/CommonTags.vue'
 
 export default Vue.extend({
   components: {
-    CommonArticleFrame
+    CommonArticleFrame,
+    CommonTags
   },
   props: {
     work: {

@@ -8,7 +8,7 @@
 import Vue from 'vue'
 import { createClient } from '@/plugins/contentful'
 
-import CommonArticleCard from '@/components/CommonArticleCard.vue'
+import CommonArticleCard from '@/components/commonPresentational/CommonArticleCard.vue'
 
 export default Vue.extend({
   components: {

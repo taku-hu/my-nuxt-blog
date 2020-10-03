@@ -1,24 +1,20 @@
 <template>
   <div class="bg-gray-200 overflow-hidden">
-    <common-header
-      v-model="keywords"
-      class="mb-1"
-      @search-article="searchArticle"
-    />
+    <all-header v-model="keywords" class="mb-1" @search-article="searchArticle" />
 
-    <main id="main" class="max-w-full flex flex-col py-10 px-4 md:flex-row lg:px-40">
+    <main id="main" class="max-w-full flex flex-col p-4 md:flex-row lg:px-40 lg:py-8">
       <div class="md:w-2/3 md:mr-4 lg:mr-8">
         <nuxt />
       </div>
 
       <div class="md:w-1/3">
-        <common-self-introduce-card class="mb-4 lg:mb-8" />
-        <common-categories-card :categories="categories" class="mb-4 lg:mb-8" />
-        <common-tags-card :tags="tags" />
+        <all-self-introduce-card class="mb-4 lg:mb-8" />
+        <all-categories-card :categories="categories" class="mb-4 lg:mb-8" />
+        <all-tags-card :tags="tags" />
       </div>
     </main>
 
-    <common-footer />
+    <all-footer />
   </div>
 </template>
 
@@ -28,19 +24,19 @@ import { createClient } from '@/plugins/contentful'
 import { EntryCollection, Entry, Field } from 'contentful/index'
 import { faTags, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import CommonSelfIntroduceCard from '@/components/CommonSelfIntroduceCard.vue'
-import CommonCategoriesCard from '@/components/CommonCategoriesCard.vue'
-import CommonTagsCard from '@/components/CommonTagsCard.vue'
-import CommonHeader from '@/components/CommonHeader.vue'
-import CommonFooter from '@/components/CommonFooter.vue'
+import AllSelfIntroduceCard from '@/components/presentational/AllSelfIntroduceCard.vue'
+import AllCategoriesCard from '@/components/presentational/AllCategoriesCard.vue'
+import AllTagsCard from '@/components/presentational/AllTagsCard.vue'
+import AllHeader from '@/components/presentational/AllHeader.vue'
+import AllFooter from '@/components/presentational/AllFooter.vue'
 
 export default Vue.extend({
   components: {
-    CommonSelfIntroduceCard,
-    CommonCategoriesCard,
-    CommonTagsCard,
-    CommonHeader,
-    CommonFooter
+    AllSelfIntroduceCard,
+    AllCategoriesCard,
+    AllTagsCard,
+    AllHeader,
+    AllFooter
   },
   data() {
     return {

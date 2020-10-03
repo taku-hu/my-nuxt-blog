@@ -17,7 +17,7 @@
 <script lang="ts">
 import Vue from 'vue'
 
-import CommonHomeCard from '@/components/CommonHomeCard.vue'
+import CommonHomeCard from '@/components/commonPresentational/CommonHomeCard.vue'
 
 export default Vue.extend({
   components: {
