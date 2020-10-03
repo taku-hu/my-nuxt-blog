@@ -3,7 +3,7 @@
     <li v-for="tag in tags" :key="tag.fields.name" class="m-2">
       <nuxt-link
         class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
-        :to="`/tag/${tag.sys.id}?name=${tag.fields.name}`"
+        :to="`/tag/${tag.sys.id}/${tag.fields.name}`"
       >
         <fa :icon="faTags" />
         {{ tag.fields.name }}

@@ -7,7 +7,7 @@
       <li v-for="category in categories" :key="category.fields.name">
         <nuxt-link
           class="font-bold text-black opacity-50 text-xl mb-3"
-          :to="`/category/${category.sys.id}?name=${category.fields.name}`"
+          :to="`/category/${category.sys.id}/${category.fields.name}`"
         >
           <fa :icon="faAngleRight" />
           {{ category.fields.name }}
