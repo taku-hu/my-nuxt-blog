@@ -117,9 +117,9 @@ export default {
         })
       ])
       return [
-        ...works.items.map(work => `work/${work.fields.slug}`),
-        ...categories.items.map(category => `category/${category.fields.slug}`),
-        ...tags.items.map(tag => `tag/${tag.sys.id}`)
+        ...works.items.map(work => `work/${work.fields.slug}?name=${work.fields.slug}`),
+        ...categories.items.map(category => `category/${category.fields.slug}?name=${category.fields.name}`),
+        ...tags.items.map(tag => `tag/${tag.sys.id}?name=${tag.fields.name}`)
       ]
     }
   },
@@ -141,9 +141,9 @@ export default {
         })
       ])
       return [
-        ...works.items.map(work => `work/${work.fields.slug}`),
-        ...categories.items.map(category => `category/${category.fields.slug}`),
-        ...tags.items.map(tag => `tag/${tag.sys.id}`)
+        ...works.items.map(work => `work/${work.fields.slug}?name=${work.fields.slug}`),
+        ...categories.items.map(category => `category/${category.fields.slug}?name=${category.fields.name}`),
+        ...tags.items.map(tag => `tag/${tag.sys.id}?name=${tag.fields.name}`)
       ]
     },
     fallback: true

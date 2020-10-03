@@ -7,7 +7,7 @@
       <li v-for="category in categories" :key="category.fields.name">
         <nuxt-link
           class="font-bold text-black opacity-50 text-xl mb-3"
-          :to="`/category/${category.sys.id}`"
+          :to="`/category/${category.sys.id}?name=${category.fields.name}`"
         >
           <fa :icon="faAngleRight" />
           {{ category.fields.name }}
@@ -22,7 +22,7 @@ import Vue, { PropType } from 'vue'
 import { Entry, Field } from 'contentful/index'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 
-import CommonHomeCard from '@/components/CommonHomeCard.vue'
+import CommonHomeCard from '@/components/commonPresentational/CommonHomeCard.vue'
 
 export default Vue.extend({
   components: {

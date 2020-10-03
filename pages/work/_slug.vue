@@ -1,16 +1,6 @@
 <template>
   <common-article-frame id="article" class="relative" :work="work">
-    <ul class="flex flex-wrap justify-center mb-10">
-      <li v-for="tag in work.fields.tag" :key="tag.fields.name" class="m-2">
-        <nuxt-link
-          class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
-          :to="`/tag/${tag.sys.id}`"
-        >
-          <fa :icon="faTags" />
-          {{ tag.fields.name }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <common-tags :tags="work.fields.tag" />
 
     <div class="article__content" v-html="$md.render(work.fields.content)" />
 
@@ -35,11 +25,13 @@ import { createClient } from '@/plugins/contentful'
 import Prism from '@/plugins/prism'
 import { faUndo, faTags } from '@fortawesome/free-solid-svg-icons'
 
-import CommonArticleFrame from '@/components/CommonArticleFrame'
+import CommonArticleFrame from '@/components/commonPresentational/CommonArticleFrame.vue'
+import CommonTags from '@/components/commonPresentational/CommonTags.vue'
 
 export default Vue.extend({
   component: {
-    CommonArticleFrame
+    CommonArticleFrame,
+    CommonTags
   },
   async asyncData({ params }) {
     const works = await createClient().getEntries({
