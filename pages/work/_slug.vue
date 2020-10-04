@@ -47,7 +47,12 @@ export default Vue.extend({
     faTags: () => faTags
   },
   mounted() {
-    Prism.highlightAll()
+    this.prismHighlight()
+  },
+  methods: {
+    prismHighlight() {
+      Prism.highlightAll()
+    }
   },
   head() {
     return {
