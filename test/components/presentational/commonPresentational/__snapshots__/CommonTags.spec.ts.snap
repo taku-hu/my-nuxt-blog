@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonHomeCard.vue template snapshot 1`] = `
+<ul
+  class="flex flex-wrap justify-center"
+>
+  <li
+    class="m-2"
+  >
+    <a
+      class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
+    >
+      <span
+        icon="[object Object]"
+      />
+      
+      name1
+    
+    </a>
+  </li>
+  <li
+    class="m-2"
+  >
+    <a
+      class="bg-blue-400 rounded shadow-sm text-xs font-bold text-white p-2"
+    >
+      <span
+        icon="[object Object]"
+      />
+      
+      name2
+    
+    </a>
+  </li>
+</ul>
+`;

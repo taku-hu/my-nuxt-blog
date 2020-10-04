@@ -15,24 +15,8 @@ import Vue from 'vue'
 import { faMousePointer } from '@fortawesome/free-solid-svg-icons'
 
 export default Vue.extend({
-  props: {
-    keywords: {
-      type: String,
-      default: ''
-    }
-  },
   computed: {
     faMousePointer: () => faMousePointer
-  },
-  methods: {
-    updateKeywords(event: Event) {
-      if(event.target instanceof HTMLInputElement) {
-        this.$emit('input', event.target.value)
-      }
-    },
-    searchArticle() {
-      this.$emit('search-article')
-    }
   }
 })
 </script>
