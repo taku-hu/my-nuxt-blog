@@ -68,7 +68,7 @@ export default Vue.extend({
     border-top: $primary 0.5rem solid;
     padding: 1rem 3rem;
     margin: 0 auto 1.2rem;
-    ol {
+    ul {
       @apply text-gray-700;
       text-align: left;
       list-style-type: disc;
@@ -79,7 +79,7 @@ export default Vue.extend({
           font-weight: bold;
           text-decoration: none;
         }
-        ol {
+        ul {
           padding-top: 1rem;
           padding-left: 2.4rem;
         }
@@ -137,12 +137,16 @@ export default Vue.extend({
       height: 20rem;
       margin: 0 auto;
     }// img
+
     ul.primary {
       @include check-list($primary);
     }// ul.primary
     ul.error {
       @include check-list($error);
     }// ul.primary
+    .marker {
+      background: linear-gradient(transparent 75%, rgba(247, 198, 104, 0.2) 75%, rgb(247, 104, 159) 85%, rgba(247, 198, 104, 0.2));
+    }// .marker
   }// &__content
 }// .article
 </style>
