@@ -91,17 +91,7 @@ export default Vue.extend({
     faSearch: () => faSearch
   },
   mounted() {
-    const target = document.querySelector('main')
-    const observer = new IntersectionObserver(entries => {
-      if(entries[0].isIntersecting) {
-        this.isScrollDown = true
-      } else {
-        this.isScrollDown = false
-      }
-    })
-    if(target) {
-      observer.observe(target)
-    }
+    this.setIntersectionObserver()
   },
   methods: {
     updateKeywords(event: Event) {
@@ -117,6 +107,19 @@ export default Vue.extend({
         location.href = '#main'
       } else {
         this.$router.push({ path: '/' })
+      }
+    },
+    setIntersectionObserver() {
+      const target = document.querySelector('main')
+      const observer = new IntersectionObserver(entries => {
+        if(entries[0].isIntersecting) {
+          this.isScrollDown = true
+        } else {
+          this.isScrollDown = false
+        }
+      })
+      if(target) {
+        observer.observe(target)
       }
     }
   }

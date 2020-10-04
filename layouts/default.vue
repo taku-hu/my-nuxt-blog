@@ -49,30 +49,11 @@ export default Vue.extend({
     faTags: () => faTags,
     faAngleRight: () => faAngleRight
   },
-  async created() {
-    const [tags, categories]: EntryCollection<Field>[] = await Promise.all([
-      createClient().getEntries({
-        'content_type': 'tag',
-        order: '-sys.createdAt'
-      }),
-      createClient().getEntries({
-        'content_type': 'category',
-        order: '-sys.createdAt'
-      })
-    ])
-
-    this.tags = tags.items
-    this.categories = categories.items
+  created() {
+    this.setContentfulItem()
   },
   mounted() {
-    const getInnerVh = () => {
-      const vh = (window as Window).innerHeight * 0.01
-      document.documentElement.style.setProperty('--vh', `${vh}px`)
-    }
-    getInnerVh()
-    window.addEventListener('resize', () => {
-      getInnerVh()
-    })
+    this.setInnerVh()
   },
   methods: {
     searchArticle() {
@@ -80,6 +61,31 @@ export default Vue.extend({
         return
       }
       this.$router.push(`/search/${this.keywords}`)
+    },
+    setInnerVh() {
+      const getInnerVh = () => {
+        const vh = (window as Window).innerHeight * 0.01
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+      }
+      getInnerVh()
+      window.addEventListener('resize', () => {
+        getInnerVh()
+      })
+    },
+    async setContentfulItem() {
+      const [tags, categories]: EntryCollection<Field>[] = await Promise.all([
+        createClient().getEntries({
+          'content_type': 'tag',
+          order: '-sys.createdAt'
+        }),
+        createClient().getEntries({
+          'content_type': 'category',
+          order: '-sys.createdAt'
+        })
+      ])
+
+      this.tags = tags.items
+      this.categories = categories.items
     }
   }
 })
