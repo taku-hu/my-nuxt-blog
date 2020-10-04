@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonHomeCard.vue template snapshot 1`] = `
+<div
+  class="w-full bg-white shadow-md py-10 mx-auto"
+>
+  <div
+    class="flex justify-center items-center mb-10"
+  >
+     
+    <div
+      class="text-left"
+    >
+      <h3
+        class="text-3xl font-bold"
+      >
+        Sample title
+      </h3>
+       
+      <p
+        class="text-xl font-bold text-gray-600"
+      >
+        Sample sub title
+      </p>
+    </div>
+  </div>
+   
+</div>
+`;

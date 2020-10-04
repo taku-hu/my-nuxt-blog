@@ -8,7 +8,7 @@ const state = () => ({
 })
 
 const getters: GetterTree<StateType, StateType> = {
-  fieldName: (state) => state.fieldName
+  fieldName: state => state.fieldName
 }
 
 const mutations: MutationTree<StateType> = {
