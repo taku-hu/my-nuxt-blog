@@ -89,7 +89,7 @@ export default {
         includeLevel: [2, 3],
         containerClass: 'article__table-of-contents',
         containerHeaderHtml: '<div class="toc-header">目次</div>',
-        listType: 'ol'
+        listType: 'ul'
       }],
       ['markdown-it-link-attributes', {
         attrs: {
