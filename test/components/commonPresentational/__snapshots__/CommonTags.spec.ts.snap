@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CommonHomeCard.vue template snapshot 1`] = `
+exports[`CommonHomeCard.vue snapshot 1`] = `
 <ul
   class="flex flex-wrap justify-center"
 >
