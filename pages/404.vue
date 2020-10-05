@@ -1,5 +1,5 @@
 <template>
-  <header class="header flex flex-col justify-center bg-white bg-right bg-no-repeat bg-contain px-4 lg:pl-40 lg:pr-0">
+  <header class="header flex flex-col justify-center px-4 lg:pl-40 lg:pr-0">
     <div class="fixed top-0 inset-x-0 z-50 flex justify-between items-center px-4 py-8 lg:pl-40">
       <h1 class="font-bold">
         <nuxt-link to="/">
@@ -70,7 +70,21 @@ export default Vue.extend({
 <style lang="scss">
 .header {
   height: calc(var(--vh, 1vh) * 100);
-  background-image: url('~@/assets/images/frameworks.svg');
+  &:before {
+    @apply bg-gray-200;
+    content:"";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url('~@/assets/images/frameworks.svg');
+    background-size: contain;
+    background-position: right;
+  }
   &__title1 {
     font-size: 2.5rem;
   }
