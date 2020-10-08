@@ -6,18 +6,16 @@ describe('CommonHomeCard.vue', () => {
   const propsData = {
     cardData: {
       title: 'Sample title',
-      subtitle: 'Sample sub title'
+      subtitle: 'Sample subtitle'
     }
   }
 
+  const wrapper = shallowMount(CommonHomeCard, { propsData })
   it('props', () => {
-    const wrapper = shallowMount(CommonHomeCard, { propsData })
     expect(wrapper.props()).toEqual(propsData)
   })
-  describe('template', () => {
-    it('snapshot', () => {
-      const wrapper = shallowMount(CommonHomeCard, { propsData })
-      expect(wrapper.vm.$el).toMatchSnapshot()
-    })
+  it('template', () => {
+    expect(wrapper.html()).toContain('<h3 class="text-3xl font-bold">Sample title</h3>')
+    expect(wrapper.html()).toContain('<p class="text-xl font-bold text-gray-600">Sample subtitle</p>')
   })
 })
