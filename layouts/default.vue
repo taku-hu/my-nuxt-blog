@@ -2,7 +2,7 @@
   <div class="overflow-hidden">
     <all-header v-model="keywords" class="mb-1" @search-article="searchArticle" />
 
-    <main id="main" class="max-w-full flex flex-col bg-gray-200 p-4 md:flex-row lg:px-40 lg:py-8">
+    <main id="main" class="max-w-full flex flex-col bg-gray-200 p-4 md:flex-row lg:px-64 lg:py-8">
       <div class="md:w-2/3 md:mr-4 lg:mr-8">
         <nuxt />
       </div>

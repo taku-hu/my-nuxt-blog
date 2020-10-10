@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import { faTags } from '@fortawesome/free-solid-svg-icons'
+// import { faTags } from '@fortawesome/free-solid-svg-icons'
 // @ts-ignore
 import CommonTags from '@/components/commonPresentational/CommonTags.vue'
 
